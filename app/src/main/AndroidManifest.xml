@@ -10,5 +10,17 @@
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
+        <service android:name=".service.AuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator"/>
+        </service>
+        <provider
+            android:authorities="com.example.sergei.testkilogramfirst.provider"
+            android:name=".provider.MusicContentProvider"
+            android:exported="false"
+            android:syncable="true"/>
     </application>
 </manifest>
