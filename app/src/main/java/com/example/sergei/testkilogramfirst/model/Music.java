@@ -5,30 +5,30 @@ package com.example.sergei.testkilogramfirst.model;
  */
 public class Music {
 
-    String id;
-    String name;
+    int id;
+    String label;
     String author;
 
-    public Music(String id, String author, String name) {
+    public Music(int id, String author, String label) {
         this.id = id;
         this.author = author;
-        this.name = name;
+        this.label = label;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getLabel() {
+        return label;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLabel(String name) {
+        this.label = name;
     }
 
     public String getAuthor() {

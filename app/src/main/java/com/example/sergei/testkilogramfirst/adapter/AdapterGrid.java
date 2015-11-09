@@ -50,7 +50,7 @@ public class AdapterGrid extends BaseAdapter {
         Music music = (Music) getItem(position);
         TextView nameAuthor = (TextView) convertView.findViewById(R.id.nameAuthor);
         TextView songName = (TextView) convertView.findViewById(R.id.songName);
-        nameAuthor.setText(music.getName());
+        nameAuthor.setText(music.getLabel());
         songName.setText(music.getAuthor());
         return convertView;
     }
