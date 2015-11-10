@@ -2,6 +2,7 @@
     package="com.example.sergei.testkilogramfirst">
     <uses-permission android:name="android.permission.INTERNET"/>
 
+
     <application
         android:name=".app.MyApplication"
         android:allowBackup="true"
@@ -10,25 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.TestListActivity">
             <intent-filter>
                 <category android:name="ANDROID.INTENT.CATEGORY.LAUNCHER"/>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-
-        <service android:name=".service.AuthenticatorService">
-            <intent-filter>
-                <action android:name="android.accounts.AccountAuthenticator"/>
-            </intent-filter>
-            <meta-data android:name="android.accounts.AccountAuthenticator"
-                android:resource="@xml/authenticator"/>
-        </service>
-        <provider
-            android:authorities="com.example.sergei.testkilogramfirst.provider"
-            android:name=".provider.MusicContentProvider"
-            android:exported="false"
-            android:syncable="true"/>
     </application>
 
 </manifest>

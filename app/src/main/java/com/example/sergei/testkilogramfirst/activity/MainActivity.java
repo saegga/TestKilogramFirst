@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.example.sergei.testkilogramfirst.R;
 import com.example.sergei.testkilogramfirst.fragment.FragmentGrid;
+import com.example.sergei.testkilogramfirst.fragment.FragmentList;
 
 /**
  * Created by sergei on 06.11.2015.
@@ -21,7 +22,8 @@ public class MainActivity extends FragmentActivity{
         Fragment fragment = manager.findFragmentById(R.id.fragmentContainer);
 
         if(fragment == null){
-            fragment = new FragmentGrid();
+            //fragment = new FragmentGrid();
+            fragment = new FragmentList();
             manager.beginTransaction()
                     .add(R.id.fragmentContainer, fragment)
                     .commit();

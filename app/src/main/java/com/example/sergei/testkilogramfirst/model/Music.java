@@ -6,6 +6,7 @@ package com.example.sergei.testkilogramfirst.model;
 public class Music {
 
     int id;
+    int version;
     String label;
     String author;
 
@@ -37,5 +38,13 @@ public class Music {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }
