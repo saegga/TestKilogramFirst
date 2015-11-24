@@ -11,12 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.TestListActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <category android:name="ANDROID.INTENT.CATEGORY.LAUNCHER"/>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="com.example.sergei.testkilogramfirst.provider.MusicContentProvider"
+            android:name=".provider.MusicContentProvider"
+            android:multiprocess="true"/>
     </application>
 
 </manifest>

@@ -13,13 +13,14 @@ import com.example.sergei.testkilogramfirst.model.Music;
  */
 public class MusicDataBaseHelper extends SQLiteOpenHelper {
 
-    private static final int VERSION = 1;
-    private static final String DB_NAME = "music.sqlite";
-    public static final String TABLE_MUSIC = "music";
-    private static final String COLUMN_LABEL = "label";
-    private static final String COLUMN_ID = "music_id";
-    private static final String COLUMN_AUTHOR = "author";
-    private static final String COLUMN_VERSION = "version";
+    private static final int VERSION = 2;
+    private static final String DB_NAME = "music.db";
+    public static final String TABLE_MUSIC = "musics";
+    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_LABEL = "label";
+    public static final String COLUMN_MUSIC_ID = "music_id";
+    public static final String COLUMN_AUTHOR = "author";
+    public static final String COLUMN_VERSION = "version";
 
 
     public MusicDataBaseHelper(Context context){
@@ -37,25 +38,22 @@ public class MusicDataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(DELETE_TABLE_MUSIC);
-        onCreate(db);
+        if(VERSION < newVersion){
+            db.execSQL(DELETE_TABLE_MUSIC);
+            onCreate(db);
+        }
+
     }
-    private static final String CREATE_TABLE_MUSIC = "create table music (" +
-            " _id integer primary key, music_id integer, label text not null, author text not null, version integer);";
+    private static final String CREATE_TABLE_MUSIC = "create table " + TABLE_MUSIC + " (" + COLUMN_ID +
+            " integer primary key autoincrement, " +  COLUMN_MUSIC_ID + " integer, " + COLUMN_LABEL +" text, "
+            + COLUMN_AUTHOR +" text, " + COLUMN_VERSION + " integer)";
 
-    private static final String DELETE_TABLE_MUSIC = "drop table music if exists";
+    private static final String DELETE_TABLE_MUSIC = "drop table if exists " + TABLE_MUSIC;
 
-    public long insertMusic(Music music){
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_ID, music.getId());
-        contentValues.put(COLUMN_LABEL, music.getLabel());
-        contentValues.put(COLUMN_AUTHOR, music.getAuthor());
-        contentValues.put(COLUMN_VERSION, music.getVersion());
-        return getWritableDatabase().insert(TABLE_MUSIC, null, contentValues);
-    }
-
-    public long deleteMusic(String whereClause,String[] whereArgs){
-        return getWritableDatabase().delete(TABLE_MUSIC, whereClause, whereArgs);
+    public void clear(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_MUSIC, COLUMN_ID + " > ?", new String[]{String.valueOf(0)});
+        db.close();
     }
 }
 
